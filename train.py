@@ -11,6 +11,7 @@ def main():
     data = CIFARDataset()
     model = SimpleCNN()
     
+    # create train/val split
     train_data, val_data = torch.utils.data.random_split(data, [0.8, 0.2])
     train_loader = torch.utils.data.DataLoader(train_data, batch_size=BATCH_SIZE)
     val_loader = torch.utils.data.DataLoader(val_data, batch_size=BATCH_SIZE)
@@ -19,6 +20,7 @@ def main():
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     
     for _ in range(TRAIN_EPOCHS):
+        # training loop
         total_loss = 0 
         model.train()
         for inputs, labels in train_loader:
@@ -31,6 +33,7 @@ def main():
             optimizer.zero_grad()
         print(f'train loss: {total_loss}')
         
+        # validation loop
         total_loss = 0
         total_correct = 0
         model.eval()

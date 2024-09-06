@@ -25,7 +25,6 @@ def main():
     print(data)
     print(len(data))
     
-    
 def unpickle(file):
     import pickle
     with open(file, 'rb') as fo:
