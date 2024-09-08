@@ -10,6 +10,7 @@ class SimpleCNN(nn.Module):
         self.pool2 = nn.MaxPool2d(3)
         self.flatten = nn.Flatten()
         self.linear1 = nn.Linear(40, 20)
+        self.relu = nn.ReLU()
         self.linear2 = nn.Linear(20, 10)
     
     def forward(self, x):
@@ -19,5 +20,6 @@ class SimpleCNN(nn.Module):
         x = self.pool2(x)
         x = self.flatten(x)
         x = self.linear1(x)
+        x = self.relu(x)
         x = self.linear2(x)
         return x
